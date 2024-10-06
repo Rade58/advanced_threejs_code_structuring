@@ -1,10 +1,20 @@
 export class Robot {
-  public name: string;
-  constructor(name: string) {
-    this.name = name;
+  private _name: string = "Paully";
+  private _legs: number;
+  constructor(name: string, legs: number) {
+    this._name = name;
+    this._legs = legs;
   }
 
   greet() {
-    console.log("Hello", this.name);
+    console.log(`Hello ${this._name}. How are you.`);
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get legs() {
+    return this._legs;
   }
 }
