@@ -4,7 +4,7 @@ import GUI from "lil-gui";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 // import { GLTFLoader, RGBELoader } from "three/examples/jsm/Addons.js";
 
-import hello_world, { FOO } from "./modules/test";
+import hello_world, { FOO } from "./local_modules/test";
 
 console.log({ FOO });
 hello_world();
