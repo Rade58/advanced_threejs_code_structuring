@@ -4,27 +4,7 @@ import GUI from "lil-gui";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 import { GLTFLoader, RGBELoader } from "three/examples/jsm/Addons.js";
 
-// HAMBURGER
-// We will test our hamburger we built with blender
-
-// we will comment out code that loads helmet model
-
-// we will load hamburger to the scene
-
-// when we change envMapIntensity you will see artfacts on the surface of the hamburger
-// a bit strange
-// These artifacts are called shadow acnes
-
-// Shadow acne can occur on both smooth and flat surface for precisions
-// reasons when calculating if the surface is in the shadow or not
-
-// The hamburger is casting a shadow on it's own surface
-
-//  WE NEED TO TWEAK THE LIGHT shadow's:
-// - `bias`   usually helps for flat surfaces
-// - `normalBias`     usually helps for rounded surfaces
-
-// with help of gui we will find the perfect value
+// WE ARE NOT USING THIS FILE, I JUST USE IT INITIALLY TO SEE IF EVERYTHING WILL WORK
 
 // ------------ gui -------------------
 /**
