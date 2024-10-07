@@ -1,4 +1,23 @@
-import * as THREE from "three";
+console.log("Hello World");
+// ------------------------------------------------------------
+// ------------------------------------------------------------
+// ------------------------------------------------------------
+// ------------------------------------------------------------
+// ------------------------------------------------------------
+// ------------------------------------------------------------
+// ------------------------------------------------------------
+// ------------------------------------------------------------
+// ------------------------------------------------------------
+// This here is just for testing purposes
+// it is from previous repo about env maps
+// ------------------------------------------------------------
+// ------------------------------------------------------------
+// ------------------------------------------------------------
+// ------------------------------------------------------------
+// ------------------------------------------------------------
+// ------------------------------------------------------------
+// ------------------------------------------------------------
+/* import * as THREE from "three";
 
 import GUI from "lil-gui";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
@@ -9,18 +28,13 @@ import hello_world, { FOO } from "./__local_modules/test";
 console.log({ FOO });
 hello_world();
 // ------------ gui -------------------
-/**
- * @description Debug UI - lil-ui
- */
+
 const gui = new GUI({
   width: 340,
   title: "Tweak it",
   closeFolders: false,
 });
 
-/**
- * @description gui parmeters
- */
 const parameters = {
   //
   // backgroundBluriness: 0.2,
@@ -32,9 +46,7 @@ const parameters = {
 // ----------------------------------
 
 //------------ canvas settings -----------
-/**
- * @description canvas settings
- */
+
 const sizes = {
   width: window.innerWidth,
   height: window.innerHeight,
@@ -45,9 +57,6 @@ const canvas: HTMLCanvasElement | null = document.querySelector("canvas.webgl");
 
 if (canvas) {
   // ---- loaders -------
-  /**
-   * @description loaders
-   */
 
   // const gltfLoader = new GLTFLoader();
   // // const cubeTextureLoader = new THREE.CubeTextureLoader();
@@ -153,9 +162,7 @@ if (canvas) {
   // ------------------------- LIGHTS ----------------------------
   // -------------------------------------------------------------
   // -------------------------------------------------------------
-  /**
-   * @description Directional light
-   */
+
   const directionalLight = new THREE.DirectionalLight("#ffffff", 1);
   directionalLight.position.set(-4, 6.5, 2.5);
   scene.add(directionalLight);
@@ -203,9 +210,8 @@ if (canvas) {
   // ---------------------------------------------------------
   // ---------------------------------------------------------
   // ---------------------------------------------------------
-  /**
-   * Event Listeners
-   */
+
+  // Event Listeners
 
   window.addEventListener("resize", (e) => {
     console.log("resizing");
@@ -231,7 +237,7 @@ if (canvas) {
     // console.log({ mouse });
   });
 
-  /* window.addEventListener("dblclick", () => {
+  window.addEventListener("dblclick", () => {
     console.log("double click");
 
     // handling safari
@@ -262,7 +268,7 @@ if (canvas) {
         document.webkitExitFullscreen();
       }
     }
-  }); */
+  });
 
   // ---------------------- TICK -----------------------------
   // ---------------------------------------------------------
@@ -271,9 +277,6 @@ if (canvas) {
 
   const clock = new THREE.Clock();
 
-  /**
-   * @description tick
-   */
   function tick() {
     // for dumping to work
     orbit_controls.update();
@@ -284,3 +287,4 @@ if (canvas) {
 
   tick();
 }
+ */

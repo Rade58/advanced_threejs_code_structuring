@@ -1,5 +1,5 @@
-import { Robot } from "./local_modules/robot";
-import { FlyingRobot } from "./local_modules/flying_robots";
+import { Robot } from "./__local_modules/robot";
+import { FlyingRobot } from "./__local_modules/flying_robots";
 
 const robot = new Robot("John", 5);
 
