@@ -7,7 +7,12 @@ if (canvas !== null) {
 
   // globalThis.experience = experience; // we already did this with constructor
 }
+// no need to use globalThis
 console.log(globalThis.experience.canvas);
+// you can do it like this
+console.log(experience.time.start);
+// experience.time.unpause();
+experience.time.pause();
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 // ------------------------------------------------------------

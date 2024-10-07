@@ -26,8 +26,9 @@ export class Sizes extends EventEmitter {
       this.trigger("sizes-resize");
     });
   }
+  // --------- methods --------
 
-  // ------- getters --------
+  // ------- getters ----------
   get width() {
     return this._width;
   }
