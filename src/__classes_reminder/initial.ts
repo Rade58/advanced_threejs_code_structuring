@@ -1,10 +1,12 @@
+// JUST FOTR TESTING
+
 import * as THREE from "three";
 
 import GUI from "lil-gui";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 // import { GLTFLoader, RGBELoader } from "three/examples/jsm/Addons.js";
 
-import hello_world, { FOO } from "./__local_modules/test";
+import hello_world, { FOO } from "./test";
 
 console.log({ FOO });
 hello_world();
