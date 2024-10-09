@@ -1,14 +1,38 @@
+import * as THREE from "three";
+
 import { Sizes } from "./Utils/Sizes";
 import { Time } from "./Utils/Time";
+import { Camera } from "./Camera";
 
+/**
+ * @description Singleton (constructor is private, use getInstance method to instatiate)
+ */
 export class Experience {
+  // Singleton related
+  private static instance: Experience | null = null;
+  //
+
+  //
   private _canvas: HTMLCanvasElement;
   //
   private _sizes: Sizes;
   private _time: Time;
-  //
+  // --------------------------------
+  private _camera: Camera;
+  //_________________________________
+  private _scene: THREE.Scene = new THREE.Scene();
+  //_________________________________
 
-  constructor(canvas: HTMLCanvasElement) {
+  // Singleton related - constructor and getInstance have same
+  // parameters
+  public static getInstance(canvas: HTMLCanvasElement): Experience {
+    if (!Experience.instance) {
+      Experience.instance = new Experience(canvas);
+    }
+    return Experience.instance;
+  }
+  // Singleton related - constructor must be private
+  private constructor(canvas: HTMLCanvasElement) {
     console.log("Experience instantiated.");
     // global access
     // also means you should only make single instance
@@ -18,6 +42,8 @@ export class Experience {
     //
     this._sizes = new Sizes();
     this._time = new Time();
+    //
+    this._camera = new Camera();
     //
 
     this.sizes.on("sizes-resize", () => {
@@ -55,6 +81,15 @@ export class Experience {
   get time() {
     return this._time;
   }
+  // -------------------
+  get scene() {
+    return this._scene;
+  }
 
+  // -------------------
+
+  get camera() {
+    return this._camera;
+  }
   // ------------------------------
 }

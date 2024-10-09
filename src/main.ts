@@ -3,7 +3,8 @@ import { Experience } from "./Experience/Experience";
 
 const canvas: HTMLCanvasElement | null = document.querySelector("canvas.webgl");
 if (canvas !== null) {
-  const experience = new Experience(canvas);
+  // don't need assignment because experience will be on globalThis
+  /* const experience =  */ Experience.getInstance(canvas);
 
   // globalThis.experience = experience; // we already did this with constructor
 }
@@ -13,6 +14,11 @@ console.log(globalThis.experience.canvas);
 console.log(experience.time.start);
 // experience.time.unpause();
 experience.time.pause();
+// ----------------------------------------
+// ----------------------------------------
+console.log(experience.scene);
+// ----------------------------------------
+// ----------------------------------------
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 // ------------------------------------------------------------
