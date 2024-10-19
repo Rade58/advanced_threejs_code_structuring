@@ -6,7 +6,6 @@ export class Sizes extends EventEmitter {
   private _pixelRatio: number;
   constructor() {
     super();
-    console.log("Sizes instatiated.");
     //
     // Setup
     this._width = window.innerWidth;
@@ -25,6 +24,8 @@ export class Sizes extends EventEmitter {
 
       this.trigger("sizes-resize");
     });
+
+    console.log("Sizes instatiated.");
   }
   // --------- methods --------
 

@@ -11,7 +11,6 @@ export class Time extends EventEmitter {
   private _paused: boolean = false;
   //
   constructor() {
-    console.log("Time instatiated.");
     super();
     // Setup
     // this._start = Date.now();
@@ -30,6 +29,8 @@ export class Time extends EventEmitter {
         this.tick();
       }
     });
+
+    console.log("Time instatiated.");
   }
 
   // --------- methods --------

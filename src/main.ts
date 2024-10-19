@@ -1,23 +1,53 @@
 import "./global.css";
 import { Experience } from "./Experience/Experience";
+import { Camera } from "./Experience/Camera";
 
+// ---------------------------------------------------------
+/**
+ * @name canvas
+ * @description our canvas, or null
+ */
 const canvas: HTMLCanvasElement | null = document.querySelector("canvas.webgl");
-if (canvas !== null) {
-  // don't need assignment because experience will be on globalThis
-  /* const experience =  */ Experience.getInstance(canvas);
+// ---------------------------------------------------------
 
-  // globalThis.experience = experience; // we already did this with constructor
-}
+// if (canvas !== null) {
+// don't need assignment because experience will be on globalThis
+// we are instatiating by using singleton
+// ---------------------------------------------------------
+/**
+ * @name experience
+ * @description singleton of "our app class"
+ */
+/* const experience =  */ Experience.getInstance(canvas);
+// ---------------------------------------------------------
+
+// globalThis.experience = experience; // we already did this with constructor
+// }
+
 // no need to use globalThis
 console.log(globalThis.experience.canvas);
 // you can do it like this
 console.log(experience.time.start);
 // experience.time.unpause();
 experience.time.pause();
+
 // ----------------------------------------
+console.log("experience.scene ", experience.scene);
 // ----------------------------------------
-console.log(experience.scene);
-// ----------------------------------------
+// camera is it's own separate thing that uses Experience
+// singleton under the hood
+
+// ---------------------------------------------------------
+/**
+ * @name camera
+ * @description singleton of our camera
+ */
+const camera = Camera.getInstance();
+// ---------------------------------------------------------
+
+console.log({ camera });
+console.log("experience singleton accessed with camera: ", camera.experience);
+
 // ----------------------------------------
 // ------------------------------------------------------------
 // ------------------------------------------------------------

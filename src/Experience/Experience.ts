@@ -2,7 +2,7 @@ import * as THREE from "three";
 
 import { Sizes } from "./Utils/Sizes";
 import { Time } from "./Utils/Time";
-import { Camera } from "./Camera";
+// import { Camera } from "./Camera";
 
 /**
  * @description Singleton (constructor is private, use getInstance method to instatiate)
@@ -13,37 +13,49 @@ export class Experience {
   //
 
   //
+  // @ts-expect-error (Singleton doesn't make easy to me that _canvas always needs to be defined)
   private _canvas: HTMLCanvasElement;
   //
   private _sizes: Sizes;
   private _time: Time;
   // --------------------------------
-  private _camera: Camera;
+  // Camera is it's own thing
+  // It will use Experience singleton instance under the hood
+  // private _camera: Camera;
   //_________________________________
   private _scene: THREE.Scene = new THREE.Scene();
   //_________________________________
 
   // Singleton related - constructor and getInstance have same
   // parameters
-  public static getInstance(canvas: HTMLCanvasElement): Experience {
+  public static getInstance(canvas?: HTMLCanvasElement | null): Experience {
     if (!Experience.instance) {
       Experience.instance = new Experience(canvas);
     }
+
+    // if there is no canvas element at this point
+    // we can throw (this is why I decided to define expected error because I don't want to define _canvas as optional)
+    if (!Experience.instance._canvas) {
+      throw new Error("Canvas is missing!");
+    }
+
     return Experience.instance;
   }
   // Singleton related - constructor must be private
-  private constructor(canvas: HTMLCanvasElement) {
-    console.log("Experience instantiated.");
+  private constructor(canvas?: HTMLCanvasElement | null) {
     // global access
     // also means you should only make single instance
     globalThis.experience = this;
+    if (canvas) {
+      this._canvas = canvas;
+    }
 
-    this._canvas = canvas;
     //
     this._sizes = new Sizes();
     this._time = new Time();
-    //
-    this._camera = new Camera();
+    // Camera is it's own thing
+    // It will use Experience singleton instance under the hood
+    // this._camera = new Camera(this._canvas);
     //
 
     this.sizes.on("sizes-resize", () => {
@@ -57,6 +69,8 @@ export class Experience {
       // console.log("Time-Tick event");
       this.update();
     });
+
+    console.log("Experience instantiated.");
   }
 
   // --------- methods --------
@@ -87,9 +101,10 @@ export class Experience {
   }
 
   // -------------------
-
-  get camera() {
-    return this._camera;
-  }
+  // Camera is it's own thing
+  // It will use Experience singleton instance under the hood
+  // get camera() {
+  //   return this._camera;
+  // }
   // ------------------------------
 }
