@@ -63,10 +63,14 @@ console.log(
   experience.camera,
   experience.camera === camera
 );
-console.log("camera.experience ", camera.experience); */
+*/
+console.log("camera.experience ", camera.experience);
+console.log("camera.ins", camera.ins);
 
 console.log("experience.renderer", experience.renderer);
 console.log("renderer.experience", renderer.experience);
+
+console.log("renderer.ins", renderer.ins);
 
 // ----------------------------------------
 // ------------------------------------------------------------

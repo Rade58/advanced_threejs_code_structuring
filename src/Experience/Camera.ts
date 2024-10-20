@@ -15,7 +15,7 @@ export class Camera {
 
   private _experience: Experience;
   // @ts-expect-error has no initializer (I'm intializing with method and ts doesn't like that)
-  private _camera: THREE.PerspectiveCamera;
+  private _ins: THREE.PerspectiveCamera;
   private _canvas: HTMLCanvasElement;
   private _scene: THREE.Scene;
   private _sizes: Sizes;
@@ -39,7 +39,7 @@ export class Camera {
 
     // setting camera instance
     // -------------------------------------------------------
-    this.setCameraInstance();
+    this.setThreeJSCamera();
     // setting controls
     // --------------------------------------------------------
 
@@ -69,8 +69,8 @@ export class Camera {
   /**
    * @description getter for threejs instance of your camera
    */
-  get camera() {
-    return this._camera;
+  get ins() {
+    return this._ins;
   }
 
   // ------------------------------------------------------------
@@ -79,11 +79,11 @@ export class Camera {
    * @description Setting instance from threejs (PerspectiveCamera usually).
    * Don't know where I'm going to use this
    */
-  private setCameraInstance(
+  private setThreeJSCamera(
     options = { fov: 35, near: 0.1, far: 100 },
     coords = { x: 6, y: 4, z: 8 }
   ) {
-    this._camera = new THREE.PerspectiveCamera(
+    this._ins = new THREE.PerspectiveCamera(
       // 35,
       options.fov,
       //
@@ -92,23 +92,23 @@ export class Camera {
       options.far
     );
 
-    this._camera.position.set(coords.x, coords.y, coords.z);
-    this._scene.add(this._camera);
+    this._ins.position.set(coords.x, coords.y, coords.z);
+    this._scene.add(this._ins);
   }
   // ------
   /**
    * @description probably not going to use this one ever
    */
   private setControls() {
-    this._controls = new OrbitControls(this._camera, this._canvas);
+    this._controls = new OrbitControls(this._ins, this._canvas);
     this._controls.enableDamping = true;
   }
   // ------------------------------------------------------------
   // ------------------------------------------------------------
   resize() {
     console.log("Resize from camera");
-    this._camera.aspect = this._sizes.width / this._sizes.height;
-    this._camera.updateProjectionMatrix();
+    this._ins.aspect = this._sizes.width / this._sizes.height;
+    this._ins.updateProjectionMatrix();
   }
   update() {
     // console.log("camera updated");

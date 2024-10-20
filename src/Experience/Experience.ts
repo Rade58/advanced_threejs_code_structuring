@@ -92,11 +92,18 @@ export class Experience {
       // console.log(this._camera);
       this._camera.resize();
     }
+
+    if (this._renderer) {
+      this._renderer.resize();
+    }
   }
   private update() {
     // console.log("update on time-tick");
     if (this._camera) {
       this._camera.update();
+    }
+    if (this._renderer) {
+      this._renderer.update();
     }
   }
   // -------------------------------------------------
