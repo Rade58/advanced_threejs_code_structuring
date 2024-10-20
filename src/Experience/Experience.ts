@@ -3,6 +3,7 @@ import * as THREE from "three";
 import { Sizes } from "./Utils/Sizes";
 import { Time } from "./Utils/Time";
 import type { Camera } from "./Camera";
+import type { Renderer } from "./Renderer";
 
 /**
  * @description Singleton (constructor is private, use getInstance method to instatiate)
@@ -23,9 +24,15 @@ export class Experience {
   // It will use Experience singleton instance under the hood
   //  BUT DON'T TRY TO INITIALIZE IT INSIDE CONSTRUCTOR (You will get range error)
   private _camera: Camera | null = null;
+
+  //
+  private _renderer: Renderer | null = null;
+
   //_________________________________
   private _scene: THREE.Scene = new THREE.Scene();
   //_________________________________
+
+  //
 
   // Singleton related - constructor and getInstance have same
   // parameters
@@ -116,6 +123,12 @@ export class Experience {
   }
   set camera(camera: Camera | null) {
     this._camera = camera;
+  }
+  get renderer() {
+    return this._renderer;
+  }
+  set renderer(renderer: Renderer | null) {
+    this._renderer = renderer;
   }
   // ------------------------------
 }

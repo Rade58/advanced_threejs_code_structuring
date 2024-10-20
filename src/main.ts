@@ -1,6 +1,7 @@
 import "./global.css";
 import { Experience } from "./Experience/Experience";
 import { Camera } from "./Experience/Camera";
+import { Renderer } from "./Experience/Renderer";
 
 // ---------------------------------------------------------
 /**
@@ -47,14 +48,25 @@ const camera = Camera.getInstance();
 experience.camera = camera;
 
 // ---------------------------------------------------------
+/**
+ * @name renderer
+ * @description singleton of our renderer
+ */
+const renderer = Renderer.getInstance();
 
-console.log({ camera });
+experience.renderer = renderer;
+// ---------------------------------------------------------
+
+/* console.log({ camera });
 console.log(
   "experience.camera ",
   experience.camera,
   experience.camera === camera
 );
-console.log("camera.experience ", camera.experience);
+console.log("camera.experience ", camera.experience); */
+
+console.log("experience.renderer", experience.renderer);
+console.log("renderer.experience", renderer.experience);
 
 // ----------------------------------------
 // ------------------------------------------------------------
