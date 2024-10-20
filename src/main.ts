@@ -29,7 +29,7 @@ console.log(globalThis.experience.canvas);
 // you can do it like this
 console.log(experience.time.start);
 // experience.time.unpause();
-experience.time.pause();
+// experience.time.pause();
 
 // ----------------------------------------
 console.log("experience.scene ", experience.scene);
@@ -43,10 +43,18 @@ console.log("experience.scene ", experience.scene);
  * @description singleton of our camera
  */
 const camera = Camera.getInstance();
+
+experience.camera = camera;
+
 // ---------------------------------------------------------
 
 console.log({ camera });
-console.log("experience singleton accessed with camera: ", camera.experience);
+console.log(
+  "experience.camera ",
+  experience.camera,
+  experience.camera === camera
+);
+console.log("camera.experience ", camera.experience);
 
 // ----------------------------------------
 // ------------------------------------------------------------

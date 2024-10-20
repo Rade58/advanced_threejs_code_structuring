@@ -2,7 +2,7 @@ import * as THREE from "three";
 
 import { Sizes } from "./Utils/Sizes";
 import { Time } from "./Utils/Time";
-// import { Camera } from "./Camera";
+import type { Camera } from "./Camera";
 
 /**
  * @description Singleton (constructor is private, use getInstance method to instatiate)
@@ -21,7 +21,8 @@ export class Experience {
   // --------------------------------
   // Camera is it's own thing
   // It will use Experience singleton instance under the hood
-  // private _camera: Camera;
+  //  BUT DON'T TRY TO INITIALIZE IT INSIDE CONSTRUCTOR (You will get range error)
+  private _camera: Camera | null = null;
   //_________________________________
   private _scene: THREE.Scene = new THREE.Scene();
   //_________________________________
@@ -55,12 +56,12 @@ export class Experience {
     this._time = new Time();
     // Camera is it's own thing
     // It will use Experience singleton instance under the hood
+    // If I would use this we would exceed call stack (we would have range error)
     // this._camera = new Camera(this._canvas);
-    //
+    // therfore we will link camera with setter
 
     this.sizes.on("sizes-resize", () => {
       // console.log("Sizes-Resize event");
-
       this.resize();
     });
 
@@ -73,17 +74,26 @@ export class Experience {
     console.log("Experience instantiated.");
   }
 
-  // --------- methods --------
-  resize() {
+  // -------------------------------------------------
+  // -------------------------------------------------
+  private resize() {
     //
-    // console.log("Resize occurs");
-    const aspect = this.sizes.width / this.sizes.height;
-
-    console.log({ aspect });
+    console.log("Resize occurs");
+    // const aspect = this.sizes.width / this.sizes.height;
+    // console.log({ aspect });
+    if (this._camera) {
+      // console.log(this._camera);
+      this._camera.resize();
+    }
   }
-  update() {
-    console.log("update on time-tick");
+  private update() {
+    // console.log("update on time-tick");
+    if (this._camera) {
+      this._camera.update();
+    }
   }
+  // -------------------------------------------------
+  // -------------------------------------------------
 
   // ---------- Getters -----------
   get canvas() {
@@ -101,10 +111,11 @@ export class Experience {
   }
 
   // -------------------
-  // Camera is it's own thing
-  // It will use Experience singleton instance under the hood
-  // get camera() {
-  //   return this._camera;
-  // }
+  get camera() {
+    return this._camera;
+  }
+  set camera(camera: Camera | null) {
+    this._camera = camera;
+  }
   // ------------------------------
 }
