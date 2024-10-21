@@ -5,6 +5,7 @@ import { Time } from "./Utils/Time";
 import type { Camera } from "./Camera";
 import type { Renderer } from "./Renderer";
 import { World } from "./World/World";
+import { Environment } from "./World/Environment";
 
 /**
  * @description Singleton (constructor is private, use getInstance method to instatiate)
@@ -27,6 +28,7 @@ export class Experience {
   private _camera: Camera | null = null;
   private _renderer: Renderer | null = null;
   private _world: World | null = null;
+  private _environment: Environment | null = null;
   //
   //_________________________________
   private _scene: THREE.Scene = new THREE.Scene();
@@ -144,6 +146,12 @@ export class Experience {
   }
   set world(world: World | null) {
     this._world = world;
+  }
+  get environment() {
+    return this._environment;
+  }
+  set environment(environment: Environment | null) {
+    this._environment = environment;
   }
   // ------------------------------
 }

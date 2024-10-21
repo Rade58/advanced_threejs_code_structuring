@@ -3,13 +3,16 @@ import { Experience } from "./Experience/Experience";
 import { Camera } from "./Experience/Camera";
 import { Renderer } from "./Experience/Renderer";
 import { World } from "./Experience/World/World";
+import { Environment } from "./Experience/World/Environment";
 
+// ---------------------------------------------------------
 // ---------------------------------------------------------
 /**
  * @name canvas
  * @description our canvas, or null
  */
 const canvas: HTMLCanvasElement | null = document.querySelector("canvas.webgl");
+// ---------------------------------------------------------
 // ---------------------------------------------------------
 
 // if (canvas !== null) {
@@ -31,6 +34,7 @@ const camera = Camera.getInstance();
 
 experience.camera = camera;
 // ---------------------------------------------------------
+// ---------------------------------------------------------
 /**
  * @name renderer
  * @description singleton of our renderer
@@ -46,6 +50,14 @@ experience.renderer = renderer;
  */
 const world = World.getInstance();
 experience.world = world;
+// ---------------------------------------------------------
+// ---------------------------------------------------------
+/**
+ * @name environment
+ * @description environment singleton
+ */
+const environement = Environment.getInstance();
+experience.environement = environement;
 // ---------------------------------------------------------
 // ---------------------------------------------------------
 
@@ -85,6 +97,9 @@ console.log("world.experience", world.experience);
 console.log("world.scene", world.scene);
 
 console.log("experience.world", experience.world);
+
+console.log("experience.environment", experience.environement);
+console.log("environment.experience", environement.experience);
 
 // ----------------------------------------
 // ------------------------------------------------------------
