@@ -1,7 +1,7 @@
 interface Source {
   name: string;
   type: string;
-  path: string[];
+  path: string[] | string;
 }
 
 export const sources: Source[] = [
@@ -9,12 +9,12 @@ export const sources: Source[] = [
     name: "environmentMapTexture",
     type: "cubeTexture",
     path: [
-      "/textures/environmentMaps/toyota/px.jpg",
-      "/textures/environmentMaps/toyota/nx.jpg",
-      "/textures/environmentMaps/toyota/py.jpg",
-      "/textures/environmentMaps/toyota/ny.jpg",
-      "/textures/environmentMaps/toyota/pz.jpg",
-      "/textures/environmentMaps/toyota/pz.jpg",
+      "/textures/environmentMaps/toyota/px.png",
+      "/textures/environmentMaps/toyota/nx.png",
+      "/textures/environmentMaps/toyota/py.png",
+      "/textures/environmentMaps/toyota/ny.png",
+      "/textures/environmentMaps/toyota/pz.png",
+      "/textures/environmentMaps/toyota/pz.png",
     ],
   },
 ];
