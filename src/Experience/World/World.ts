@@ -10,9 +10,12 @@ export class World {
   private _experience: Experience;
   private _scene: Experience["_scene"];
 
+  private _resources: Experience["_resources"];
+
   /**
    * @description instatiate this at the end of the constructor
    */
+  // @ts-expect-error using method to instatiate
   private _environment: Environment;
 
   //
@@ -27,6 +30,9 @@ export class World {
 
   private constructor() {
     this._experience = Experience.getInstance();
+
+    this._resources = this._experience.resources;
+
     this._scene = this._experience.scene;
 
     // ------------- Adding test mesh ----------------
@@ -37,8 +43,20 @@ export class World {
     );
     this._scene.add(testMesh);
     // -----------------------------------------------
+    // -----------------------------------------------
+    // listening to 'file-ready' event
+    this._resources.on("file-ready", () => {
+      console.log("resources are ready");
+      // setup
+      this._environment = Environment.getInstance();
+    });
+    // -----------------------------------------------
+    // -----------------------------------------------
 
-    this._environment = Environment.getInstance();
+    // as you see above, instead of here
+    // we instatiated environment in event handler above
+    // this._environment = Environment.getInstance();
+    //
     console.log("World instatiated.");
   }
 

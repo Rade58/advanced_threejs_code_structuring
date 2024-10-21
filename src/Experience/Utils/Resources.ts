@@ -121,8 +121,8 @@ export class Resources extends EventEmitter {
     this._loaded++;
     if (this._loaded === this._toLoad) {
       this.trigger("file-ready");
-      console.log("file-ready triggered");
-      console.log(this._loaded, this._toLoad, this._items);
+      // console.log("file-ready triggered");
+      // console.log(this._loaded, this._toLoad, this._items);
     }
   }
 }
