@@ -13,6 +13,18 @@ export class Environment {
   private _sunLight: THREE.DirectionalLight;
   //
 
+  //
+  private _resources: Experience["_resources"];
+  //
+
+  // @ts-expect-error initialized with method
+  private _environmentMap: {
+    texture: Experience["_resources"]["_items"][string];
+    intensity: number;
+    // this doesn't exist anymore I think
+    // encoding: THREE.sRGBEncoding;
+  };
+
   public static getInstance() {
     if (!Environment.instance) {
       Environment.instance = new Environment();
@@ -24,10 +36,18 @@ export class Environment {
   private constructor() {
     //
     this._experience = Experience.getInstance();
+
+    this._resources = this._experience.resources;
+
     this._scene = this._experience.scene;
 
     // setup
     this.setSunLight();
+
+    this._resources.on("file-ready", () => {
+      this.setEnvironmentMap();
+    });
+
     //
 
     console.log("Environment instatiated");
@@ -39,6 +59,9 @@ export class Environment {
   }
   get scene() {
     return this._scene;
+  }
+  get resources() {
+    return this._resources;
   }
 
   // setup method
@@ -53,5 +76,22 @@ export class Environment {
     this._scene.add(this._sunLight);
 
     console.log("Sunlight set");
+  }
+
+  // --------------------------------------------------
+  // --------------------------------------------------
+  private setEnvironmentMap() {
+    console.log("environmentMap Set");
+    console.log(this._resources.items);
+    this._environmentMap = {
+      texture: this._resources.items["environmentMapTexture"],
+      intensity: 0.4,
+      // this doesn't exist anymore
+      // encoding: THREE.sRGBEncoding
+    };
+
+    // @ts-expect-error because of bad ideo of putting all
+    // resources together (my opinion)
+    this._scene.environment = this._environmentMap.texture;
   }
 }

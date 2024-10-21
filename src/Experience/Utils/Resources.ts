@@ -118,6 +118,8 @@ export class Resources extends EventEmitter {
     file: THREE.Texture | THREE.CubeTexture | GLTF
   ) {
     this._items[source.name] = file;
+    console.log(source.name);
+    console.log(this._items[source.name]);
     this._loaded++;
     if (this._loaded === this._toLoad) {
       this.trigger("file-ready");
