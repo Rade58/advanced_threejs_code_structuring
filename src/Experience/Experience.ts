@@ -6,6 +6,7 @@ import type { Camera } from "./Camera";
 import type { Renderer } from "./Renderer";
 import { World } from "./World/World";
 import { Environment } from "./World/Environment";
+import { Resources } from "./Utils/Resources";
 
 /**
  * @description Singleton (constructor is private, use getInstance method to instatiate)
@@ -21,6 +22,11 @@ export class Experience {
   //
   private _sizes: Sizes;
   private _time: Time;
+  //_________________________________
+  private _scene: THREE.Scene = new THREE.Scene();
+  //_________________________________
+  //
+  private _resources: Resources = new Resources();
   // --------------------------------
   // Camera is it's own thing
   // It will use Experience singleton instance under the hood
@@ -30,9 +36,6 @@ export class Experience {
   private _world: World | null = null;
   private _environment: Environment | null = null;
   //
-  //_________________________________
-  private _scene: THREE.Scene = new THREE.Scene();
-  //_________________________________
 
   //
 

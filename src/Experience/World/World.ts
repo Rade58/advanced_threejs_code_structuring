@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { Experience } from "../Experience";
+import { Environment } from "./Environment";
 
 export class World {
   //
@@ -8,6 +9,11 @@ export class World {
 
   private _experience: Experience;
   private _scene: Experience["_scene"];
+
+  /**
+   * @description instatiate this at the end of the constructor
+   */
+  private _environment: Environment;
 
   //
 
@@ -32,6 +38,7 @@ export class World {
     this._scene.add(testMesh);
     // -----------------------------------------------
 
+    this._environment = Environment.getInstance();
     console.log("World instatiated.");
   }
 
@@ -40,5 +47,8 @@ export class World {
   }
   get scene() {
     return this._scene;
+  }
+  get environment() {
+    return this._environment;
   }
 }

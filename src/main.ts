@@ -57,7 +57,7 @@ experience.world = world;
  * @description environment singleton
  */
 const environement = Environment.getInstance();
-experience.environement = environement;
+experience.environment = environement;
 // ---------------------------------------------------------
 // ---------------------------------------------------------
 
@@ -65,7 +65,7 @@ experience.environement = environement;
 // }
 
 // no need to use globalThis
-console.log(globalThis.experience.canvas);
+/* console.log(globalThis.experience.canvas);
 // you can do it like this
 console.log(experience.time.start);
 // experience.time.unpause();
@@ -77,13 +77,13 @@ console.log("experience.scene ", experience.scene);
 // camera is it's own separate thing that uses Experience
 // singleton under the hood
 
-/* console.log({ camera });
+ console.log({ camera });
 console.log(
   "experience.camera ",
   experience.camera,
   experience.camera === camera
 );
-*/
+
 console.log("camera.experience ", camera.experience);
 console.log("camera.ins", camera.ins);
 
@@ -98,10 +98,12 @@ console.log("world.scene", world.scene);
 
 console.log("experience.world", experience.world);
 
-console.log("experience.environment", experience.environement);
+console.log("experience.environment", experience.environment);
 console.log("environment.experience", environement.experience);
 
-// ----------------------------------------
+console.log("world.environment", world.environment); */
+
+// ------------------------------------------------------------
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 // ------------------------------------------------------------
