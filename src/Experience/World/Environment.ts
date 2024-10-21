@@ -90,8 +90,8 @@ export class Environment {
       // encoding: THREE.sRGBEncoding
     };
 
-    // @ts-expect-error because of bad ideo of putting all
-    // resources together (my opinion)
-    this._scene.environment = this._environmentMap.texture;
+    if (this._environmentMap.texture instanceof THREE.Texture) {
+      this._scene.environment = this._environmentMap.texture;
+    }
   }
 }
