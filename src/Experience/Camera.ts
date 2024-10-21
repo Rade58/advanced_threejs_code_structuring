@@ -1,6 +1,5 @@
 import * as THREE from "three";
 import { Experience } from "./Experience";
-import type { Sizes } from "./Utils/Sizes";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 
 /**
@@ -16,9 +15,9 @@ export class Camera {
   private _experience: Experience;
   // @ts-expect-error has no initializer (I'm intializing with method and ts doesn't like that)
   private _ins: THREE.PerspectiveCamera;
-  private _canvas: HTMLCanvasElement;
-  private _scene: THREE.Scene;
-  private _sizes: Sizes;
+  private _canvas: Experience["_canvas"];
+  private _scene: Experience["_scene"];
+  private _sizes: Experience["_sizes"];
   // @ts-expect-error has no initializer (I'm intializing with method and ts doesn't like that)
   private _controls: OrbitControls;
 

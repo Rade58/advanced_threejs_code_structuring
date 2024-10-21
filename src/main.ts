@@ -2,6 +2,7 @@ import "./global.css";
 import { Experience } from "./Experience/Experience";
 import { Camera } from "./Experience/Camera";
 import { Renderer } from "./Experience/Renderer";
+import { World } from "./Experience/World/World";
 
 // ---------------------------------------------------------
 /**
@@ -21,6 +22,32 @@ const canvas: HTMLCanvasElement | null = document.querySelector("canvas.webgl");
  */
 /* const experience =  */ Experience.getInstance(canvas);
 // ---------------------------------------------------------
+// ---------------------------------------------------------
+/**
+ * @name camera
+ * @description singleton of our camera
+ */
+const camera = Camera.getInstance();
+
+experience.camera = camera;
+// ---------------------------------------------------------
+/**
+ * @name renderer
+ * @description singleton of our renderer
+ */
+const renderer = Renderer.getInstance();
+
+experience.renderer = renderer;
+// ---------------------------------------------------------
+// ---------------------------------------------------------
+/**
+ * @name world
+ * @description singleton of our world
+ */
+const world = World.getInstance();
+experience.world = world;
+// ---------------------------------------------------------
+// ---------------------------------------------------------
 
 // globalThis.experience = experience; // we already did this with constructor
 // }
@@ -38,25 +65,6 @@ console.log("experience.scene ", experience.scene);
 // camera is it's own separate thing that uses Experience
 // singleton under the hood
 
-// ---------------------------------------------------------
-/**
- * @name camera
- * @description singleton of our camera
- */
-const camera = Camera.getInstance();
-
-experience.camera = camera;
-
-// ---------------------------------------------------------
-/**
- * @name renderer
- * @description singleton of our renderer
- */
-const renderer = Renderer.getInstance();
-
-experience.renderer = renderer;
-// ---------------------------------------------------------
-
 /* console.log({ camera });
 console.log(
   "experience.camera ",
@@ -71,6 +79,12 @@ console.log("experience.renderer", experience.renderer);
 console.log("renderer.experience", renderer.experience);
 
 console.log("renderer.ins", renderer.ins);
+
+console.log("world.experience", world.experience);
+
+console.log("world.scene", world.scene);
+
+console.log("experience.world", experience.world);
 
 // ----------------------------------------
 // ------------------------------------------------------------

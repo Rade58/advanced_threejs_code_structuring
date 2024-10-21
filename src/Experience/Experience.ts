@@ -4,6 +4,7 @@ import { Sizes } from "./Utils/Sizes";
 import { Time } from "./Utils/Time";
 import type { Camera } from "./Camera";
 import type { Renderer } from "./Renderer";
+import { World } from "./World/World";
 
 /**
  * @description Singleton (constructor is private, use getInstance method to instatiate)
@@ -24,10 +25,9 @@ export class Experience {
   // It will use Experience singleton instance under the hood
   //  BUT DON'T TRY TO INITIALIZE IT INSIDE CONSTRUCTOR (You will get range error)
   private _camera: Camera | null = null;
-
-  //
   private _renderer: Renderer | null = null;
-
+  private _world: World | null = null;
+  //
   //_________________________________
   private _scene: THREE.Scene = new THREE.Scene();
   //_________________________________
@@ -99,6 +99,8 @@ export class Experience {
   }
   private update() {
     // console.log("update on time-tick");
+    // make sure that you first update
+    // camera and then renderer to awoid some bugs
     if (this._camera) {
       this._camera.update();
     }
@@ -136,6 +138,12 @@ export class Experience {
   }
   set renderer(renderer: Renderer | null) {
     this._renderer = renderer;
+  }
+  get world() {
+    return this._world;
+  }
+  set world(world: World | null) {
+    this._world = world;
   }
   // ------------------------------
 }

@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import type { Sizes } from "./Utils/Sizes";
 import { Experience } from "./Experience";
 import { Camera } from "./Camera";
 
@@ -13,9 +12,9 @@ export class Renderer {
 
   //
   //
-  private _canvas: HTMLCanvasElement;
-  private _sizes: Sizes;
-  private _scene: THREE.Scene;
+  private _canvas: Experience["_canvas"];
+  private _sizes: Experience["_sizes"];
+  private _scene: Experience["_scene"];
   private _camera: Camera;
 
   // ------------------------------------------------
@@ -37,11 +36,13 @@ export class Renderer {
     this._sizes = this._experience.sizes;
 
     this.setWebGlRenderer();
+
+    console.log("Renderer instatiated.");
   }
   // ------------------------------------------------
   // ------------------------------------------------
   private setWebGlRenderer() {
-    console.log(this._canvas);
+    // console.log(this._canvas);
 
     this._ins = new THREE.WebGLRenderer({
       canvas: this._canvas,
