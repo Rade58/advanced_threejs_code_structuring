@@ -15,7 +15,7 @@ export class Floor {
     this.setMaterial();
     this.setMesh();
 
-    console.log("Floor instatiated");
+    console.log("Floor instatiated!");
   }
 
   //
