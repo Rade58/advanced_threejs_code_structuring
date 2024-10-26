@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { Experience } from "../Experience";
 import { Environment } from "./Environment";
+import { Floor } from "./Floor";
 
 export class World {
   //
@@ -20,6 +21,10 @@ export class World {
 
   //
 
+  //
+  private _floor: Floor;
+  //
+
   public static getInstance() {
     if (!World.instance) {
       World.instance = new World();
@@ -35,6 +40,10 @@ export class World {
 
     this._scene = this._experience.scene;
 
+    // -----------------------------------------------
+    this._floor = new Floor();
+
+    // -----------------------------------------------
     // ------------- Adding test mesh ----------------
     const testMesh = new THREE.Mesh(
       new THREE.BoxGeometry(1, 1, 1),
@@ -68,5 +77,12 @@ export class World {
   }
   get environment() {
     return this._environment;
+  }
+  // --------------------------------------------------
+  // --------------------------------------------------
+  // --------------------------------------------------
+  // --------------------------------------------------
+  get floor() {
+    return this._floor;
   }
 }

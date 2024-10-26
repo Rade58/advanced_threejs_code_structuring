@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { Experience } from "../Experience";
+import type { GLTF } from "three/examples/jsm/Addons.js";
 
 export class Environment {
   private static instance: Environment | null = null;
@@ -46,6 +47,7 @@ export class Environment {
 
     this._resources.on("file-ready", () => {
       this.setEnvironmentMap();
+      this.updateMaterials();
     });
 
     //
@@ -82,7 +84,7 @@ export class Environment {
   // --------------------------------------------------
   private setEnvironmentMap() {
     console.log("environmentMap Set");
-    console.log(this._resources.items);
+    // console.log(this._resources.items);
     this._environmentMap = {
       texture: this._resources.items["environmentMapTexture"],
       intensity: 0.4,
@@ -93,5 +95,45 @@ export class Environment {
     if (this._environmentMap.texture instanceof THREE.Texture) {
       this._scene.environment = this._environmentMap.texture;
     }
+  }
+  // ------
+  /**
+   * @description Using this to make sure envMap did apply on our material
+   * Aparently there is a bug where env map doesn't work so we
+   * need to use `needsUpdate`
+   * in my case envMap aplication on material worked for me without this method
+   * but I used this method anyway
+   */
+  updateMaterials() {
+    this._scene.traverse((child) => {
+      if (
+        child instanceof THREE.Mesh &&
+        child.material instanceof THREE.MeshStandardMaterial &&
+        this._environmentMap.texture instanceof THREE.Texture
+      ) {
+        child.material.envMap = this._environmentMap.texture;
+        child.material.envMapIntensity = this._environmentMap.intensity;
+        child.material.needsUpdate = true;
+        console.log("material updated", { child });
+      }
+    });
+  }
+
+  //
+  updateEnvMap(options?: {
+    texture?: THREE.Texture | THREE.CubeTexture | GLTF;
+    intensity: number;
+  }) {
+    if (!options) return;
+
+    if (options.texture) {
+      this._environmentMap.texture = options.texture;
+    }
+
+    if (options.intensity) {
+      this._environmentMap.intensity = options.intensity;
+    }
+
+    this.updateMaterials();
   }
 }

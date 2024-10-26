@@ -17,6 +17,26 @@ export const sources: Source[] = [
       "/textures/environmentMaps/toyota/pz.png",
     ],
   },
+  {
+    name: "groundColorTexture",
+    type: "texture",
+    path: "/textures/ground/arm.jpg",
+  },
+  {
+    name: "groundNormalTexture",
+    type: "texture",
+    path: "/textures/ground/nor_gl.png",
+  },
+  {
+    name: "groundDiffTexture",
+    type: "texture",
+    path: "/textures/ground/diff.jpg",
+  },
+  {
+    name: "groundRoughTexture",
+    type: "texture",
+    path: "/textures/ground/rough.jpg",
+  },
 ];
 
 export type sourcesType = typeof sources;
