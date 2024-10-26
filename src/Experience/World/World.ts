@@ -21,7 +21,7 @@ export class World {
 
   //
 
-  //
+  // @ts-expect-error using method to instatiate
   private _floor: Floor;
   //
 
@@ -40,23 +40,26 @@ export class World {
 
     this._scene = this._experience.scene;
 
-    // -----------------------------------------------
-    this._floor = new Floor();
-
-    // -----------------------------------------------
     // ------------- Adding test mesh ----------------
     const testMesh = new THREE.Mesh(
       new THREE.BoxGeometry(1, 1, 1),
       // new THREE.MeshBasicMaterial({ wireframe: true })
       new THREE.MeshStandardMaterial() // visible if light
     );
-    this._scene.add(testMesh);
+    // this._scene.add(testMesh);
     // -----------------------------------------------
     // -----------------------------------------------
     // listening to 'file-ready' event
     this._resources.on("file-ready", () => {
       console.log("resources are ready");
       // setup
+      //
+      // -----------------------------------------------
+      this._floor = new Floor();
+
+      // -----------------------------------------------
+
+      //
       this._environment = Environment.getInstance();
     });
     // -----------------------------------------------

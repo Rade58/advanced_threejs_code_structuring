@@ -68,7 +68,8 @@ export class Environment {
 
   // setup method
   private setSunLight() {
-    this._sunLight = new THREE.DirectionalLight(0xffffff, 4);
+    this._sunLight = new THREE.DirectionalLight(0xffffff, 0.6);
+    // this._sunLight = new THREE.DirectionalLight(0xffffff, 4);
     this._sunLight.castShadow = true;
     this._sunLight.shadow.camera.far = 15;
     this._sunLight.shadow.mapSize.set(1024, 1024);
@@ -87,7 +88,8 @@ export class Environment {
     // console.log(this._resources.items);
     this._environmentMap = {
       texture: this._resources.items["environmentMapTexture"],
-      intensity: 0.4,
+      // intensity: 0.4,
+      intensity: 0.2,
       // this doesn't exist anymore
       // encoding: THREE.sRGBEncoding
     };

@@ -9,33 +9,44 @@ export const sources: Source[] = [
     name: "environmentMapTexture",
     type: "cubeTexture",
     path: [
-      "/textures/environmentMaps/toyota/px.png",
-      "/textures/environmentMaps/toyota/nx.png",
-      "/textures/environmentMaps/toyota/py.png",
-      "/textures/environmentMaps/toyota/ny.png",
-      "/textures/environmentMaps/toyota/pz.png",
-      "/textures/environmentMaps/toyota/pz.png",
+      "/textures/environmentMaps/field/px.png",
+      "/textures/environmentMaps/field/nx.png",
+      "/textures/environmentMaps/field/py.png",
+      "/textures/environmentMaps/field/ny.png",
+      "/textures/environmentMaps/field/pz.png",
+      "/textures/environmentMaps/field/pz.png",
     ],
+  },
+  {
+    name: "groundAOTexture",
+    type: "texture",
+    path: "/textures/pine_forest/ao.png",
   },
   {
     name: "groundColorTexture",
     type: "texture",
-    path: "/textures/ground/arm.jpg",
+    path: "/textures/pine_forest/color.png",
+  },
+
+  {
+    name: "groundMetalTexture",
+    type: "texture",
+    path: "/textures/pine_forest/metal.png",
   },
   {
     name: "groundNormalTexture",
     type: "texture",
-    path: "/textures/ground/nor_gl.png",
-  },
-  {
-    name: "groundDiffTexture",
-    type: "texture",
-    path: "/textures/ground/diff.jpg",
+    path: "/textures/pine_forest/normal.png",
   },
   {
     name: "groundRoughTexture",
     type: "texture",
-    path: "/textures/ground/rough.jpg",
+    path: "/textures/pine_forest/metal.png",
+  },
+  {
+    name: "groundDispTexture",
+    type: "texture",
+    path: "/textures/pine_forest/height.png",
   },
 ];
 
