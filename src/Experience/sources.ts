@@ -9,12 +9,12 @@ export const sources: Source[] = [
     name: "environmentMapTexture",
     type: "cubeTexture",
     path: [
-      "/textures/environmentMaps/rooftop/px.png",
-      "/textures/environmentMaps/rooftop/nx.png",
-      "/textures/environmentMaps/rooftop/py.png",
-      "/textures/environmentMaps/rooftop/ny.png",
-      "/textures/environmentMaps/rooftop/pz.png",
-      "/textures/environmentMaps/rooftop/pz.png",
+      "/textures/environmentMaps/alley/px.png",
+      "/textures/environmentMaps/alley/nx.png",
+      "/textures/environmentMaps/alley/py.png",
+      "/textures/environmentMaps/alley/ny.png",
+      "/textures/environmentMaps/alley/pz.png",
+      "/textures/environmentMaps/alley/pz.png",
     ],
   },
   {

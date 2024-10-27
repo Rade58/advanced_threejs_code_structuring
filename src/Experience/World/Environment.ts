@@ -37,10 +37,10 @@ export class Environment {
     // setup
     this.setSunLight();
 
-    this._resources.on("file-ready", () => {
-      this.setEnvironmentMap();
-      this.updateMaterials();
-    });
+    // this._resources.on("file-ready", () => {
+    this.setEnvironmentMap();
+    this.updateMaterials();
+    // });
 
     //
 

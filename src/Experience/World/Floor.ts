@@ -145,6 +145,7 @@ export class Floor {
 
   setMesh() {
     this._mesh = new THREE.Mesh(this._geometry, this._material);
+    this._mesh.receiveShadow = true;
 
     this._mesh.rotation.x = -Math.PI / 2;
 

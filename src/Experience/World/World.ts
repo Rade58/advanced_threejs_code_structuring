@@ -1,4 +1,4 @@
-// import * as THREE from "three";
+import * as THREE from "three";
 import { Experience } from "../Experience";
 import { Environment } from "./Environment";
 import { Floor } from "./Floor";
@@ -17,15 +17,14 @@ export class World {
   /**
    * @description instatiate this at the end of the constructor
    */
-  // @ts-expect-error using method to instatiate
+  // @ts-expect-error instantiated outside constructor
   private _environment: Environment;
 
   //
-
-  // @ts-expect-error using method to instatiate
+  // @ts-expect-error instantiated outside constructor
   private _floor: Floor;
-  //
-  // @ts-expect-error using method to instatiate
+  // @ts-expect-error instantiated outside constructor
+
   private _fox: Fox;
 
   public static getInstance() {
@@ -47,17 +46,17 @@ export class World {
     // -----------------------------------------------
     // -----------------------------------------------
 
-    /* const testMesh = new THREE.Mesh(
+    const testMesh = new THREE.Mesh(
       new THREE.BoxGeometry(1, 1, 1),
       // new THREE.MeshBasicMaterial({ wireframe: true })
       new THREE.MeshStandardMaterial() // visible if light
-    ); */
-    // this._scene.add(testMesh);
+    );
     // -----------------------------------------------
     // -----------------------------------------------
     // -----------------------------------------------
     // listening to 'file-ready' event
     this._resources.on("file-ready", () => {
+      // this._scene.add(testMesh);
       console.log("resources are ready");
       // setup
       //
