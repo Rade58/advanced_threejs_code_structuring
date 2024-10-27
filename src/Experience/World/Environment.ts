@@ -26,15 +26,7 @@ export class Environment {
     // encoding: THREE.sRGBEncoding;
   };
 
-  public static getInstance() {
-    if (!Environment.instance) {
-      Environment.instance = new Environment();
-    }
-
-    return Environment.instance;
-  }
-
-  private constructor() {
+  constructor() {
     //
     this._experience = Experience.getInstance();
 
@@ -68,7 +60,7 @@ export class Environment {
 
   // setup method
   private setSunLight() {
-    this._sunLight = new THREE.DirectionalLight(0xffffff, 0.6);
+    this._sunLight = new THREE.DirectionalLight(0xffffff, 2);
     // this._sunLight = new THREE.DirectionalLight(0xffffff, 4);
     this._sunLight.castShadow = true;
     this._sunLight.shadow.camera.far = 15;
@@ -89,7 +81,7 @@ export class Environment {
     this._environmentMap = {
       texture: this._resources.items["environmentMapTexture"],
       // intensity: 0.4,
-      intensity: 0.2,
+      intensity: 0.4,
       // this doesn't exist anymore
       // encoding: THREE.sRGBEncoding
     };

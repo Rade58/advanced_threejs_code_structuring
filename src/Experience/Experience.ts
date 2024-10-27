@@ -35,7 +35,7 @@ export class Experience {
   private _camera: Camera | null = null;
   private _renderer: Renderer | null = null;
   private _world: World | null = null;
-  private _environment: Environment | null = null;
+  // private _environment: Environment | null = null;
   //
 
   //
@@ -155,11 +155,11 @@ export class Experience {
   set world(world: World | null) {
     this._world = world;
   }
-  get environment() {
+  /* get environment() {
     return this._environment;
   }
   set environment(environment: Environment | null) {
     this._environment = environment;
-  }
+  } */
   // ------------------------------
 }

@@ -52,12 +52,6 @@ const world = World.getInstance();
 experience.world = world;
 // ---------------------------------------------------------
 // ---------------------------------------------------------
-/**
- * @name environment
- * @description environment singleton
- */
-const environement = Environment.getInstance();
-experience.environment = environement;
 // ---------------------------------------------------------
 // ---------------------------------------------------------
 

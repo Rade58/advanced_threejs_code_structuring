@@ -120,11 +120,11 @@ export class Floor {
       // doesn't work anymore
       // this._texture.color.encoding = THREE.sRGBEncoding
 
-      // this._textures.color.repeat.set(1.5, 1.5);
+      this._textures.color.repeat.set(1.5, 1.5);
       this._textures.color.wrapS = THREE.RepeatWrapping;
       this._textures.color.wrapT = THREE.RepeatWrapping;
 
-      // this._textures.normal.repeat.set(1.5, 1.5);
+      this._textures.normal.repeat.set(1.5, 1.5);
       this._textures.normal.wrapS = THREE.RepeatWrapping;
       this._textures.normal.wrapT = THREE.RepeatWrapping;
     }

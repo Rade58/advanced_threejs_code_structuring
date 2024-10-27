@@ -1,7 +1,8 @@
-import * as THREE from "three";
+// import * as THREE from "three";
 import { Experience } from "../Experience";
 import { Environment } from "./Environment";
 import { Floor } from "./Floor";
+import { Fox } from "./Fox";
 
 export class World {
   //
@@ -24,6 +25,8 @@ export class World {
   // @ts-expect-error using method to instatiate
   private _floor: Floor;
   //
+  // @ts-expect-error using method to instatiate
+  private _fox: Fox;
 
   public static getInstance() {
     if (!World.instance) {
@@ -41,12 +44,16 @@ export class World {
     this._scene = this._experience.scene;
 
     // ------------- Adding test mesh ----------------
-    const testMesh = new THREE.Mesh(
+    // -----------------------------------------------
+    // -----------------------------------------------
+
+    /* const testMesh = new THREE.Mesh(
       new THREE.BoxGeometry(1, 1, 1),
       // new THREE.MeshBasicMaterial({ wireframe: true })
       new THREE.MeshStandardMaterial() // visible if light
-    );
+    ); */
     // this._scene.add(testMesh);
+    // -----------------------------------------------
     // -----------------------------------------------
     // -----------------------------------------------
     // listening to 'file-ready' event
@@ -55,12 +62,15 @@ export class World {
       // setup
       //
       // -----------------------------------------------
+      // if you put these after you add environment
+      // environment map won't apply so we do it beforehand
       this._floor = new Floor();
+      this._fox = new Fox();
 
       // -----------------------------------------------
 
       //
-      this._environment = Environment.getInstance();
+      this._environment = new Environment();
     });
     // -----------------------------------------------
     // -----------------------------------------------
@@ -87,5 +97,8 @@ export class World {
   // --------------------------------------------------
   get floor() {
     return this._floor;
+  }
+  get fox() {
+    return this._fox;
   }
 }
