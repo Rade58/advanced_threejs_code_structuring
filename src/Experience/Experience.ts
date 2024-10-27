@@ -70,7 +70,7 @@ export class Experience {
 
     // ----------------------------------
     // ----------------------------------
-    this._debug_ui = new UiDebug();
+    this._debug_ui = UiDebug.getInstance();
     // ----------------------------------
     // ----------------------------------
 
@@ -179,4 +179,7 @@ export class Experience {
     this._environment = environment;
   } */
   // ------------------------------
+  get debugui() {
+    return this._debug_ui;
+  }
 }
