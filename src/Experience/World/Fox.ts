@@ -6,20 +6,31 @@ export class Fox {
   private _experience: Experience;
   private _scene: Experience["_scene"];
   private _resources: Experience["_resources"];
+  private _time: Experience["_time"];
 
   private _resource: GLTF;
   // @ts-expect-error instatiated within method
   private _model: GLTF["scene"];
+  //
+  // @ts-expect-error instatiated within method
+  private _animation: {
+    mixer: THREE.AnimationMixer;
+    action: THREE.AnimationAction;
+  };
   //
 
   constructor() {
     this._experience = Experience.getInstance();
     this._resources = this._experience.resources;
     this._scene = this._experience.scene;
+    this._time = this._experience.time;
 
     //
     this._resource = this._resources.items["foxModel"] as GLTF;
     this.setModel();
+    this.setAnimation();
+    //
+
     //
 
     console.log("Fox instatiated");
@@ -44,8 +55,27 @@ export class Fox {
       }
     });
   }
+  //
+  //
+  setAnimation() {
+    //
+    console.log("setting animation");
+
+    const mixer = new THREE.AnimationMixer(this._model);
+    this._animation = {
+      mixer,
+      action: mixer.clipAction(this._resource.animations[0]),
+    };
+
+    this._animation.action.play();
+  }
 
   //
+  update() {
+    // console.log("updating the fox");
+
+    this._animation.mixer.update(this._time.delta * 0.001);
+  }
   //
   get experience() {
     return this._experience;

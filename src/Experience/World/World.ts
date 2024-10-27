@@ -81,6 +81,14 @@ export class World {
     console.log("World instatiated.");
   }
 
+  // ---------------------------------------------
+  update() {
+    if (this._fox) {
+      // this._fox.update();
+    }
+  }
+  // ---------------------------------------------
+
   get experience() {
     return this._experience;
   }

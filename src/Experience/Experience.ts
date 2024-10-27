@@ -5,9 +5,10 @@ import { Time } from "./Utils/Time";
 import type { Camera } from "./Camera";
 import type { Renderer } from "./Renderer";
 import { World } from "./World/World";
-import { Environment } from "./World/Environment";
+// import { Environment } from "./World/Environment";
 import { Resources } from "./Utils/Resources";
 import { sources } from "./sources";
+import { UiDebug } from "./Utils/UiDebug";
 
 /**
  * @description Singleton (constructor is private, use getInstance method to instatiate)
@@ -37,6 +38,12 @@ export class Experience {
   private _world: World | null = null;
   // private _environment: Environment | null = null;
   //
+  // ---------------------------------------------------------
+  // ---------------------------------------------------------
+  private _debug_ui: UiDebug;
+
+  // ---------------------------------------------------------
+  // ---------------------------------------------------------
 
   //
 
@@ -60,6 +67,13 @@ export class Experience {
     // global access
     // also means you should only make single instance
     globalThis.experience = this;
+
+    // ----------------------------------
+    // ----------------------------------
+    this._debug_ui = new UiDebug();
+    // ----------------------------------
+    // ----------------------------------
+
     if (canvas) {
       this._canvas = canvas;
     }
@@ -112,6 +126,9 @@ export class Experience {
     }
     if (this._renderer) {
       this._renderer.update();
+    }
+    if (this._world) {
+      this._world.update();
     }
   }
   // -------------------------------------------------

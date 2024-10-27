@@ -3,7 +3,7 @@ import { Experience } from "./Experience/Experience";
 import { Camera } from "./Experience/Camera";
 import { Renderer } from "./Experience/Renderer";
 import { World } from "./Experience/World/World";
-import { Environment } from "./Experience/World/Environment";
+// import { Environment } from "./Experience/World/Environment";
 
 // ---------------------------------------------------------
 // ---------------------------------------------------------
