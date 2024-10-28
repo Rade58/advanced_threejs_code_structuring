@@ -29,3 +29,5 @@ experience.world.fox.animation.actions.idle.stop()
 experience.world.fox.animation.actions.walking.play()
 experience.world.fox.animation.actions.walking.stop()
 ```
+
+I we would wrap some of these inside some of our methods of Fox class we can also test those, which unlike me author of the workshop did in this lesson. He had a play method where he would pass a name of the action as an argument. 
