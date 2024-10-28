@@ -30,4 +30,4 @@ experience.world.fox.animation.actions.walking.play()
 experience.world.fox.animation.actions.walking.stop()
 ```
 
-I we would wrap some of these inside some of our methods of Fox class we can also test those, which unlike me author of the workshop did in this lesson. He had a play method where he would pass a name of the action as an argument. 
+We could wrap some of these above, inside some of our methods of Fox class, and we can also test those methods like this, which unlike me author of the workshop actually did in this lesson. He had a play method where he would pass a name of the action as an argument. 
