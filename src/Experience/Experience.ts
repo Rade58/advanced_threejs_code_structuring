@@ -182,4 +182,23 @@ export class Experience {
   get debugui() {
     return this._debug_ui;
   }
+
+  // --------------------------------------------
+  // --------------------------------------------
+  // --------------------------------------------
+  // --------------------------------------------
+  destroy() {
+    // you can test this directly in console
+
+    // remove event listeners
+    this._sizes.off("sizes-resize");
+    this._time.off("time-tick");
+
+    // disposing everything
+    this._scene.traverse((child) => {
+      console.log(child);
+    });
+  }
+
+  // --------------------------------------------
 }

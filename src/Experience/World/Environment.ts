@@ -118,6 +118,39 @@ export class Environment {
           this.updateMaterials();
           console.log("update materials");
         });
+
+      this.debugFolder
+        .add(this._sunLight.position, "x")
+        .name("sunlight position x")
+        .min(-5)
+        .max(10)
+        .step(0.001);
+      /* .onChange(() => {
+          this.updateMaterials();
+          console.log("update materials");
+        }); */
+
+      this.debugFolder
+        .add(this._sunLight.position, "y")
+        .name("sunlight position y")
+        .min(-5)
+        .max(10)
+        .step(0.001);
+      /* .onChange(() => {
+          this.updateMaterials();
+          console.log("update materials");
+        }); */
+
+      this.debugFolder
+        .add(this._sunLight.position, "z")
+        .name("sunlight position z")
+        .min(-5)
+        .max(10)
+        .step(0.001);
+      /* .onChange(() => {
+          this.updateMaterials();
+          console.log("update materials");
+        }); */
     }
 
     //
