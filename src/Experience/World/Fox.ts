@@ -200,4 +200,9 @@ export class Fox {
   get model() {
     return this._model;
   }
+  //
+  get animation() {
+    return this._animation;
+  }
+  //
 }
