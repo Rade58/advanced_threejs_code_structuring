@@ -196,8 +196,58 @@ export class Experience {
 
     // disposing everything
     this._scene.traverse((child) => {
-      console.log(child);
+      if (child instanceof THREE.Mesh) {
+        // console.log(child);
+        if (child.geometry.dispose) {
+          // console.log({ geometryDispose: child.geometry.dispose });
+
+          if (typeof child.geometry.dispose === "function")
+            console.log(child.geometry.dispose);
+          child.geometry.dispose();
+          // console.log("DISPOSED 1");
+        }
+
+        for (const key in child.material) {
+          // console.log({ key });
+          const value = child.material[key];
+          // console.log({ value });
+
+          if (value && typeof value.dispose !== "undefined") {
+            // console.log(typeof value.dispose);
+            // console.log({ value });
+            if (typeof value.dispose === "function") {
+              // console.log({ geometryDispose: value.dispose });
+
+              value.dispose();
+
+              // console.log("DISPOSED 2");
+            }
+
+            //  console.log({
+            // material: value.dispose,
+            // type: typeof value.dispose,
+            // });
+            // if (typeof value.dispose === "object") {
+            // if (value.dispose[0]) {
+            // console.log(value.dispose[0]);
+            // }
+            // }
+          }
+        }
+      }
     });
+
+    // dispose controls and renderer
+    if (this._camera) {
+      this._camera.controls.dispose();
+    }
+    if (this._renderer) {
+      this._renderer.ins.dispose();
+    }
+    // disposing debug
+    if (this._debug_ui.is_active_hash) {
+      this._debug_ui.gui?.destroy();
+    }
   }
 
   // --------------------------------------------

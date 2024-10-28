@@ -55,6 +55,8 @@ Not that easy, there is [esey](https://threejs.org/docs/#manual/en/introduction/
 
 We are doing this inside mentioned `destroy` method on the Experience
 
+**for more complex projects you would define multiple destroy functions**
+
 We need to traverse the the scene and look for the things that we want to dispose
 
 We will proceed it like this:
@@ -63,3 +65,17 @@ We will proceed it like this:
 - Call the `dispose` method on the `geometry` property of the mesh
 - loop through every key of the `material` property
 - if there is `dispose` function available on mentioned key, call it (we are doing all of this for material because as you remember we can have so many maps (like ao, color, normal, and we need to dispose all of them))
+
+We can then dispose controls, renderer
+
+In case of using post processing you need to dispose EffectComposer, its WebGLRendererTarget and any potential passes you are using (we are not using those in this project)
+
+and we dispose of debug
+
+we didn't remove canvas and the last frame is still rendered in it, but you can remove it from the page if you need to do that
+
+we didn;t dispose actual resize events on window, and if you are pick you can remove that also
+
+## but you still need to go through your code and see what else you need to dispose
+
+this is a good practice
