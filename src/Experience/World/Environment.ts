@@ -1,9 +1,10 @@
 import * as THREE from "three";
 import { Experience } from "../Experience";
 import type { GLTF } from "three/examples/jsm/Addons.js";
+import type { GUI } from "lil-gui";
 
 export class Environment {
-  private static instance: Environment | null = null;
+  // private static instance: Environment | null = null;
 
   //
   private _experience: Experience;
@@ -26,6 +27,13 @@ export class Environment {
     // encoding: THREE.sRGBEncoding;
   };
 
+  private _debugui: Experience["_debug_ui"];
+
+  public debugFolder: GUI | null = null;
+  public debugSettings = {
+    intensity: 0.4,
+  };
+
   constructor() {
     //
     this._experience = Experience.getInstance();
@@ -33,6 +41,14 @@ export class Environment {
     this._resources = this._experience.resources;
 
     this._scene = this._experience.scene;
+
+    //
+    this._debugui = this._experience.debugui;
+
+    if (this._debugui.is_active_hash && this._debugui.gui) {
+      this.debugFolder = this._debugui.gui.addFolder("Environment");
+    }
+    //
 
     // setup
     this.setSunLight();
@@ -89,6 +105,22 @@ export class Environment {
     if (this._environmentMap.texture instanceof THREE.Texture) {
       this._scene.environment = this._environmentMap.texture;
     }
+
+    // debug
+    if (this._debugui.is_active_hash && this._debugui.gui && this.debugFolder) {
+      this.debugFolder
+        .add(this._environmentMap, "intensity")
+        .name("envMap.intensity")
+        .min(0)
+        .max(4)
+        .step(0.001)
+        .onChange(() => {
+          this.updateMaterials();
+          console.log("update materials");
+        });
+    }
+
+    //
   }
   // ------
   /**
